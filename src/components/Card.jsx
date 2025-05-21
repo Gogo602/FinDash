@@ -1,5 +1,4 @@
-import React from 'react'
-
+// eslint-disable-next-line react/prop-types
 const Card = ({icon, title, value, change, changeIcon, changeType}) => {
   return (
     <div className='bg-white text-dark p-4 shadow-md space-y-2

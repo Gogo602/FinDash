@@ -1,4 +1,3 @@
-// components/CryptoChart.js
 import React, { useEffect, useState, useCallback } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
@@ -10,9 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  TimeScale, // Import TimeScale for more robust date handling (optional, but good for charts)
 } from 'chart.js';
-import 'chartjs-adapter-date-fns'; // Required for TimeScale
 
 // Register Chart.js components
 ChartJS.register(
@@ -22,22 +19,43 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
-  // If using TimeScale, uncomment these and make sure adapter is installed
-  // TimeScale // You might need to install 'date-fns' or 'moment' and their chart.js adapters
+  Legend
 );
 
-const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K'; // Your actual API key
+const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K';
 
 const CryptoChart = ({ coinId = 'bitcoin', days = 7, currency = 'usd' }) => {
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false); // State to track dark mode
+
+  // Effect to detect dark mode
+  useEffect(() => {
+    const detectDarkMode = () => {
+      // Check if the HTML element has the 'dark' class
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    };
+
+    // Initial detection
+    detectDarkMode();
+
+    // Observe changes to the HTML element's class attribute
+    // This is useful if the theme can be toggled without a full page reload
+    const observer = new MutationObserver(detectDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    // Cleanup observer on component unmount
+    return () => observer.disconnect();
+  }, []); // Empty dependency array means this runs once on mount and cleans up on unmount
 
   const fetchMarketChartData = useCallback(async () => {
     setLoading(true);
     setError(null);
-    setChartData(null); // Clear previous data
+    setChartData(null);
 
     const options = {
       method: 'GET',
@@ -54,7 +72,8 @@ const CryptoChart = ({ coinId = 'bitcoin', days = 7, currency = 'usd' }) => {
       );
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        throw new Error(`HTTP error! Status: ${response.status}. Message: ${errorData.error || errorData.message || 'Unknown error'}`);
       }
 
       const data = await response.json();
@@ -62,14 +81,13 @@ const CryptoChart = ({ coinId = 'bitcoin', days = 7, currency = 'usd' }) => {
       if (data && data.prices) {
         const prices = data.prices;
         
-        // Dynamically format labels based on the number of days
         const labels = prices.map(price => {
           const date = new Date(price[0]);
-          if (days <= 1) { // Within 24 hours, show time
+          if (days <= 1) {
             return date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
-          } else if (days <= 30) { // Up to 30 days, show short date
+          } else if (days <= 30) {
             return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-          } else { // More than 30 days, show month/year
+          } else {
             return date.toLocaleDateString(undefined, { month: 'short', year: '2-digit' });
           }
         });
@@ -83,12 +101,12 @@ const CryptoChart = ({ coinId = 'bitcoin', days = 7, currency = 'usd' }) => {
               label: `${coinId.charAt(0).toUpperCase() + coinId.slice(1)} Price`,
               data: values,
               fill: true,
-              backgroundColor: 'rgba(54, 162, 235, 0.2)', // Light blue fill
-              borderColor: 'rgba(54, 162, 235, 1)',    // Solid blue line
-              tension: 0.3, // Apply some tension for a smoother curve
-              pointRadius: 0, // Hide data points
-              pointHoverRadius: 5, // Show point on hover
-              hitRadius: 10, // Larger hit area for tooltips
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              tension: 0.3,
+              pointRadius: 0,
+              pointHoverRadius: 5,
+              hitRadius: 10,
             },
           ],
         });
@@ -107,50 +125,55 @@ const CryptoChart = ({ coinId = 'bitcoin', days = 7, currency = 'usd' }) => {
     fetchMarketChartData();
   }, [fetchMarketChartData]);
 
+  // Determine colors based on theme
+  const textColor = isDarkMode ? 'white' : 'black';
+  const gridColor = isDarkMode ? 'rgba(200, 200, 200, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+  const tickColor = isDarkMode ? 'gray' : 'black';
+
+
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false, // Image doesn't show legend
+        display: false,
       },
       title: {
         display: true,
         text: `${coinId.charAt(0).toUpperCase() + coinId.slice(1)} Performance`,
-        color: 'black', // Dark text for the title
+        color: textColor, // Dynamic color for title
         font: {
-          size: 18, // Slightly larger title
+          size: 18,
           weight: 'bold',
         },
-        align: 'start', // Align title to the left
+        align: 'start',
       },
       tooltip: {
         mode: 'index',
         intersect: false,
-        backgroundColor: 'rgba(30, 41, 59, 0.9)', // Dark background (like slate-800)
+        backgroundColor: isDarkMode ? 'rgba(30, 41, 59, 0.9)' : 'rgba(0, 0, 0, 0.7)', // Darker tooltip on dark mode
         titleColor: 'white',
         bodyColor: 'white',
-        cornerRadius: 6, // Rounded corners
-        displayColors: false, // Hide the colored box next to the label
+        cornerRadius: 6,
+        displayColors: false,
         padding: 10,
         callbacks: {
             title: function(context) {
-                // Get the date label from the context
                 if (context.length > 0) {
                     const label = context[0].label;
-                    return label; // The label is already formatted
+                    return label;
                 }
                 return '';
             },
             label: function(context) {
                 let label = context.dataset.label || '';
                 if (label) {
-                    label += ': ';
+                    label += '';
                 }
                 if (context.parsed.y !== null) {
                     label += `$${context.parsed.y.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
                 }
-                return `value : ${label}`; // "value : $XXXX.XX"
+                return `value : ${label}`;
             }
         }
       },
@@ -159,30 +182,30 @@ const CryptoChart = ({ coinId = 'bitcoin', days = 7, currency = 'usd' }) => {
       x: {
         grid: {
           display: true,
-          drawBorder: false, // Hide axis line
-          color: (context) => context.tick && context.tick.major ? 'rgba(128, 128, 128, 0.3)' : 'rgba(128, 128, 128, 0.1)', // Thicker for major ticks, thinner for minor
-          borderDash: [2, 2], // Dotted lines
+          drawBorder: false,
+          color: gridColor, // Dynamic grid color
+          borderDash: [2, 2],
         },
         ticks: {
-          color: 'gray', // Axis label color
-          autoSkip: true, // Automatically skip labels if too crowded
-          maxRotation: 0, // Prevent labels from rotating
+          color: tickColor, // Dynamic tick color
+          autoSkip: true,
+          maxRotation: 0,
           minRotation: 0,
         },
       },
       y: {
         grid: {
           display: true,
-          drawBorder: false, // Hide axis line
-          color: (context) => context.tick && context.tick.major ? 'rgba(128, 128, 128, 0.3)' : 'rgba(128, 128, 128, 0.1)',
-          borderDash: [2, 2], // Dotted lines
+          drawBorder: false,
+          color: gridColor, // Dynamic grid color
+          borderDash: [2, 2],
         },
         ticks: {
-          color: 'gray',
+          color: tickColor, // Dynamic tick color
           callback: function(value) {
-            return `$${value.toLocaleString()}`; // Format Y-axis labels as currency
+            return `$${value.toLocaleString()}`;
           },
-          precision: 0, // No decimal places for Y-axis ticks
+          precision: 0,
         },
       },
     },
@@ -201,9 +224,10 @@ const CryptoChart = ({ coinId = 'bitcoin', days = 7, currency = 'usd' }) => {
   }
 
   return (
-    <div className='bg-white p-4 dark:bg-gray-800 shadow-md rounded-lg h-96'> {/* Added fixed height for container */}
-      <h3 className='text-lg font-semibold mb-2 text-gray-900 dark:text-white sr-only'>Crypto Performance</h3> {/* Hidden, as title is part of chart */}
-      <div style={{ height: '100%', width: '100%' }}> {/* Chart fills the container */}
+    <div className='bg-white p-4 dark:bg-gray-800 shadow-md rounded-lg h-96'>
+      {/* The actual h3 is effectively replaced by the chart's title */}
+      <h3 className='text-lg font-semibold mb-2 text-gray-900 dark:text-white sr-only'>Crypto Performance</h3>
+      <div style={{ height: '100%', width: '100%' }}>
         <Line data={chartData} options={chartOptions} />
       </div>
     </div>

@@ -4,6 +4,7 @@ import Card from '../Card';
 import { FaArrowUp, FaArrowDown, FaPlus, FaMinus } from 'react-icons/fa'; 
 import CryptoChart from './CryptoChart';
 import CryptoWatchlist from './CryptoWatchlist';
+import CryptoOverview from './CryptoOverview';
 
 const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K'; 
 
@@ -79,7 +80,7 @@ const Crypto = () => {
     const tetherChange = formatChange(tether);
 
     return (
-        <div className='w-full space-x-3 px-8'>
+        <div className='w-full space-x-3'>
             <div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6'>
                     <Card
@@ -119,9 +120,8 @@ const Crypto = () => {
                     <CryptoChart />
                     <CryptoWatchlist />
                 </div>
-                <div className='bg-white p-4 dark:bg-gray-800 shadow-md rounded-lg'>
-                    <h3 className='text-lg font-semibold mb-2'>Crypto Market Overview</h3>
-                    <p className="text-center text-gray-500">Crypto market overview goes here.</p>
+                <div className=''>
+                    <CryptoOverview />
                 </div>
             </div>
         </div>

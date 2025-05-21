@@ -25,7 +25,7 @@ const Dashboard = () => {
 
     return (
         <div className='w-full h-auto mt-16 mb-10'>
-            <div className='mt-8 mx-8'>
+            <div className='mt-8'>
                 <div className='flex items-center justify-between py-8'>
                     {/* These comments should be removed in final code */}
                     {/* these two buttons are supposed to switch btween each components of crypto or stock when a user clicked on it and should indicate i it is active or not */}
