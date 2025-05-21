@@ -17,7 +17,7 @@ const Sidebar = () => {
     const inactiveClass = "hover:bg-gray-600 hover:text-white";
 
     return (
-        <div className=" hidden grow bg-gray-100 text-gray-900 h-auto mt-16 px-4 md:w-40 border-r border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white md:inline-block">
+        <div className=" hidden bg-gray-100 text-gray-900 h-auto mt-16 px-4 w-40 border-r border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white md:inline-block">
             <ul className='flex flex-col mt-5 text-sm font-bold space-y-6'>
                 <Link 
                     to='#' 
