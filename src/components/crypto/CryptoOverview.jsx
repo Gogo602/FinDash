@@ -129,7 +129,7 @@ const CryptoOverview = () => {
         <div className='bg-white p-4 dark:bg-gray-800 shadow-md rounded-lg'>
         <h3 className={`text-lg font-semibold mb-4 ${primaryTextColor}`}>Crypto Market Overview</h3>
         <p className={`text-sm font-semibold mb-4 ${primaryTextColor}`}>Top Performing Cryptocurrencies</p>
-            <div className='space-y-4 px-5 pt-5'>
+            <div className='space-y-2  pt-5'>
                 {/* Table Header */}
                 <div className={`flex items-center justify-between font-bold text-sm ${primaryTextColor}`}>
                     <p className="w-1/6 text-left">Rank</p>
@@ -142,7 +142,7 @@ const CryptoOverview = () => {
                 <div className={`flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700 ${secondaryTextColor}`}>
                     <p className="w-1/6 text-left">{bitcoinData.rank}</p>
                     <h1 className={`w-2/6 text-left font-medium ${primaryTextColor}`}>BTC</h1>
-                    <div className='flex gap-1 items-center w-2/6 justify-end'>
+                    <div className='flex gap-1 items-center w-2/6 justify-center'>
                         <p className='mb-1'>{bitcoinData.icon}</p>
                         <p className={` ${bitcoinData.type === 'positive' ? 'text-green-500' : 'text-red-500'}`}>{bitcoinData.display}</p>
                     </div>
@@ -153,7 +153,7 @@ const CryptoOverview = () => {
                 <div className={`flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700 ${secondaryTextColor}`}>
                     <p className="w-1/6 text-left">{ethereumData.rank}</p>
                     <h1 className={`w-2/6 text-left font-medium ${primaryTextColor}`}>ETH</h1>
-                    <div className='flex gap-1 items-center w-2/6 justify-end'>
+                    <div className='flex gap-1 items-center w-2/6 justify-center'>
                         <p className='mb-1'>{ethereumData.icon}</p>
                         <p className={` ${ethereumData.type === 'positive' ? 'text-green-500' : 'text-red-500'}`}>{ethereumData.display}</p>
                     </div>
@@ -164,7 +164,7 @@ const CryptoOverview = () => {
                 <div className={`flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700 ${secondaryTextColor}`}>
                     <p className="w-1/6 text-left">{tetherData.rank}</p>
                     <h1 className={`w-2/6 text-left font-medium ${primaryTextColor}`}>USDT</h1>
-                    <div className='flex gap-1 items-center w-2/6 justify-end'>
+                    <div className='flex gap-1 items-center w-2/6 justify-center'>
                         <p className='mb-1'>{tetherData.icon}</p>
                         <p className={` ${tetherData.type === 'positive' ? 'text-green-500' : 'text-red-500'}`}>{tetherData.display}</p>
                     </div>
@@ -175,7 +175,7 @@ const CryptoOverview = () => {
                 <div className={`flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700 ${secondaryTextColor}`}>
                     <p className="w-1/6 text-left">{rippleData.rank}</p>
                     <h1 className={`w-2/6 text-left font-medium ${primaryTextColor}`}>XRP</h1>
-                    <div className='flex gap-1 items-center w-2/6 justify-end'>
+                    <div className='flex gap-1 items-center w-2/6 justify-center'>
                         <p className='mb-1'>{rippleData.icon}</p>
                         <p className={` ${rippleData.type === 'positive' ? 'text-green-500' : 'text-red-500'}`}>{rippleData.display}</p>
                     </div>
@@ -186,7 +186,7 @@ const CryptoOverview = () => {
                 <div className={`flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700 ${secondaryTextColor}`}>
                     <p className="w-1/6 text-left">{binancecoinData.rank}</p>
                     <h1 className={`w-2/6 text-left font-medium ${primaryTextColor}`}>BNB</h1>
-                    <div className='flex gap-1 items-center w-2/6 justify-end'>
+                    <div className='flex gap-1 items-center w-2/6 justify-center'>
                         <p className='mb-1'>{binancecoinData.icon}</p>
                         <p className={` ${binancecoinData.type === 'positive' ? 'text-green-500' : 'text-red-500'}`}>{binancecoinData.display}</p>
                     </div>
@@ -197,7 +197,7 @@ const CryptoOverview = () => {
                 <div className={`flex items-center justify-between py-2 ${secondaryTextColor}`}> 
                     <p className="w-1/6 text-left">{solanaData.rank}</p>
                     <h1 className={`w-2/6 text-left font-medium ${primaryTextColor}`}>SOL</h1>
-                    <div className='flex gap-1 items-center w-2/6 justify-end'>
+                    <div className='flex gap-1 items-center w-2/6 justify-center'>
                         <p className='mb-1'>{solanaData.icon}</p>
                         <p className={` ${solanaData.type === 'positive' ? 'text-green-500' : 'text-red-500'}`}>{solanaData.display}</p>
                     </div>
