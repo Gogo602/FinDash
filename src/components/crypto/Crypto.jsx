@@ -1,10 +1,11 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import Card from '../Card';
-import { FaArrowUp, FaArrowDown, FaPlus, FaMinus } from 'react-icons/fa'; // Keep these imports
+import { FaArrowUp, FaArrowDown, FaPlus, FaMinus } from 'react-icons/fa'; 
 import CryptoChart from './CryptoChart';
+import CryptoWatchlist from './CryptoWatchlist';
 
-const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K'; // Your actual API key
+const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K'; 
 
 const Crypto = () => {
     const [allCoins, setAllCoins] = useState([]);
@@ -30,7 +31,6 @@ const Crypto = () => {
             }
             const data = await response.json();
             setAllCoins(data);
-            // console.log("Fetched Data:", data); // For debugging: inspect this in console
         } catch (err) {
             console.error("Failed to fetch coins:", err);
             setError(err.message);
@@ -64,8 +64,7 @@ const Crypto = () => {
 
         const percentage = coin.price_change_percentage_24h;
 
-        // The display value will *not* have an explicit '+' or '-' sign now.
-        // toFixed() will automatically include '-' for negative numbers.
+        
         const displayValue = `${Math.abs(percentage).toFixed(2)}%`; // Use Math.abs to remove the minus sign for the number
         
         const type = percentage >= 0 ? <FaPlus className="inline w-2 ml-1 text-green-500" /> : <FaMinus className="inline w-2 ml-1 text-red-500" />;
@@ -118,10 +117,7 @@ const Crypto = () => {
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-6'>
                     <CryptoChart />
-                    <div className='bg-white p-4 dark:bg-gray-800 shadow-md rounded-lg'>
-                        <h3 className='text-lg font-semibold mb-2'>My Crypto Watchlist</h3>
-                        <p className="text-center text-gray-500">Crypto watchlist goes here.</p>
-                    </div>
+                    <CryptoWatchlist />
                 </div>
                 <div className='bg-white p-4 dark:bg-gray-800 shadow-md rounded-lg'>
                     <h3 className='text-lg font-semibold mb-2'>Crypto Market Overview</h3>
