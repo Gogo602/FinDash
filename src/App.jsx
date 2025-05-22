@@ -1,11 +1,12 @@
 import Dashboard from './components/Dashboard';
+import CryptoDetail from './components/market/crypto/CryproDetail';
+import MarketDashboard from './components/market/MarketDashboard';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import ThemeContextProvider from './context/ThemeContextProvider';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
-    
       <Router>
         <ThemeContextProvider>
           <Navbar />
@@ -15,6 +16,8 @@ function App() {
               <div className="p-4"> 
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
+                  <Route path="/market" element={<MarketDashboard />} />
+                  <Route path="/crypto/:coinId" element={<CryptoDetail />} />
                   <Route path="*" element={<div className="p-6 text-center">Page Not Found</div>} />
                 </Routes>
               </div>
