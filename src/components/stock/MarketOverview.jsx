@@ -62,7 +62,8 @@ const MarketOverview = () => {
             if (data && data.c !== undefined && data.pc !== undefined) {
                 const currentPrice = data.c;
                 const previousClose = data.pc;
-                const volume = data.v;
+              const volume = data.t;
+            
 
                 if (previousClose === null || previousClose === 0) {
                     return {
@@ -72,7 +73,8 @@ const MarketOverview = () => {
                         price_change: 0,
                         price_change_percentage_24h: 0,
                         total_volume: volume,
-                    };
+                  };
+
                 }
 
                 const priceChange = currentPrice - previousClose;
@@ -175,7 +177,7 @@ const MarketOverview = () => {
             if (Date.now() - timestamp < CACHE_EXPIRY_MS) {
                 setStocks(data);
                 setLoading(false); // Data loaded from cache, no initial loading spinner
-                console.log('Market data loaded from cache.');
+                
             } else {
                 console.log('Cached market data is stale. Fetching new data...');
             }
@@ -192,7 +194,6 @@ const MarketOverview = () => {
 
         // 3. Set up periodic fetching
         const intervalId = setInterval(() => {
-            console.log('Periodically fetching new market data...');
             fetchAndCacheAllMarketStocks(true); // true for background fetch
         }, CACHE_EXPIRY_MS); // Fetch every 5 minutes
 
