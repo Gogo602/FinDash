@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
-export const ThemeCotext = createContext()
+export const ThemeContext = createContext()
 
 const ThemeContextProvider = ({children}) => {
     const [theme, setTheme] = useState('dark')
@@ -16,9 +16,9 @@ const ThemeContextProvider = ({children}) => {
         setTheme(theme === "light" ? 'dark' : 'light')
     }
   return (
-    <ThemeCotext.Provider value={{theme, toggleTheme}}>
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
         {children}
-    </ThemeCotext.Provider>
+    </ThemeContext.Provider>
   )
 }
 

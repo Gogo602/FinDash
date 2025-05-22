@@ -10,13 +10,13 @@ const Dashboard = () => {
     const getButtonClasses = (tabName) => {
         return `p-1 rounded-md transition-colors px-4 font-bold duration-200 ease-in-out ${
             activeTab === tabName
-                ? 'bg-blue-600 text-white dark:bg-blue-600' // Active state
-                : 'text-gray-800  dark:text-gray-200 hover:bg-blue-400 ' // Inactive state
+                ? 'bg-blue-600 text-white dark:bg-blue-600' 
+                : 'text-gray-800  dark:text-gray-200 hover:bg-blue-400 ' 
         }`;
     };
 
     return (
-        <div className='w-full h-auto mt-16 mb-10'>
+        <div className='w-full h-auto mt-16 md:pl-40 mb-10'>
             <div className='mt-8'>
                 <div className='flex items-center justify-between py-8'>
                     <h1>Dashboard</h1>
@@ -37,7 +37,7 @@ const Dashboard = () => {
                             Crypto
                         </button>
                     </div>
-                    {/* Time frame filters - you'd also need state to manage these */}
+                   
                     <ul className='flex items-center space-x-1 text-blue-50'>
                         <li className='cursor-pointer px-2 py-1 bg-blue-600 rounded-sm'>1D</li>
                         <li className='cursor-pointer px-2 py-1 bg-blue-600 rounded-sm'>1W</li>
@@ -48,7 +48,7 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            {/* Conditional Rendering based on activeTab state */}
+            
             {activeTab === 'stock' ? (
                 <Stock />
             ) : (
