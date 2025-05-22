@@ -1,10 +1,11 @@
-import React, { useState } from 'react'; 
-import Stock from './stock/Stock';
-import Crypto from './crypto/Crypto';
+import  { useState } from 'react'; 
+
 import { FaPlus } from 'react-icons/fa';
+import CryptoMarket from './crypto/CryptoMarket';
 
 
-const Dashboard = () => {
+
+const MarketDashboard = () => {
     const [activeTab, setActiveTab] = useState('stock'); 
 
     const getButtonClasses = (tabName) => {
@@ -50,12 +51,12 @@ const Dashboard = () => {
 
             
             {activeTab === 'stock' ? (
-                <Stock />
+                <p>stock</p>
             ) : (
-                <Crypto />
+               <CryptoMarket />
             )}
         </div>
     );
 };
 
-export default Dashboard;
+export default MarketDashboard;
