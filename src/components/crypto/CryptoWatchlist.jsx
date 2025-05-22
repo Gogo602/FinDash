@@ -1,5 +1,5 @@
 
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
 
@@ -24,8 +24,8 @@ const CryptoWatchlist = () => {
         });
 
         return () => observer.disconnect();
-    }, []); // Empty dependency array as this only runs once on mount
-
+    }, []); 
+  
     const fetchAllCoins = useCallback(async () => {
         setLoading(true);
         setError(null);

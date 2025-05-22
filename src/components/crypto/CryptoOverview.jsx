@@ -134,7 +134,7 @@ const CryptoOverview = () => {
                 <div className={`flex items-center justify-between font-bold text-sm ${primaryTextColor}`}>
                     <p className="w-1/6 text-left">Rank</p>
                     <h1 className="w-2/6 text-left">Name</h1>
-                    <p className="w-2/6 text-right">Change (24hr)</p>
+                    <p className="w-2/6 text-center">Change (24hr)</p>
                     <p className="w-1/6 text-right">Volume</p>
                 </div>
 
