@@ -5,7 +5,7 @@ import StockChart from './StockChart';
 import Watchlist from './WatchList';
 import MarketOverview from './MarketOverview';
 
-const FINNHUB_API_KEY = 'd0mv1i1r01qmjqmjlhrgd0mv1i1r01qmjqmjlhs0';
+const FINNHUB_API_KEY = import.meta.env.VITE_FINNHUB_API_KEY;
 
 const StockDashboard = () => {
     const [stockData, setStockData] = useState({});

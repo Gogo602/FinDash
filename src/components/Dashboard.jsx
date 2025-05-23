@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import { useState } from 'react'; 
 import Stock from './stock/Stock';
 import Crypto from './crypto/Crypto';
 import { FaPlus } from 'react-icons/fa';

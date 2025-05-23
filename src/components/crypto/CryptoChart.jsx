@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K';
+const COINGECKO_API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;
 
 const CryptoChart = ({ coinId = 'bitcoin', days = 7, currency = 'usd' }) => {
   const [chartData, setChartData] = useState(null);

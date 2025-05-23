@@ -24,7 +24,7 @@ ChartJS.register(
     Legend
 );
 
-const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K'; 
+const COINGECKO_API_KEY = import.meta.env.VITE_COINGECKO_API_KEY; 
 
 const CryptoDetail = () => {
     const { coinId } = useParams(); // Get the coin ID from the URL

@@ -6,7 +6,7 @@ import CryptoChart from './CryptoChart';
 import CryptoWatchlist from './CryptoWatchlist';
 import CryptoOverview from './CryptoOverview';
 
-const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K'; 
+const COINGECKO_API_KEY = import.meta.env.VITE_COINGECKO_API_KEY; 
 
 const Crypto = () => {
     const [allCoins, setAllCoins] = useState([]);

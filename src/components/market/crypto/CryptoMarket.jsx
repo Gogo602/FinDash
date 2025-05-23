@@ -3,7 +3,7 @@ import { FaArrowUp, FaArrowDown, FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../../context/ThemeContextProvider';
 
-const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K';
+const COINGECKO_API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;
 
 const CryptoMarket = () => {
     const [allCoins, setAllCoins] = useState([]);

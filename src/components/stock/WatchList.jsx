@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
 
-const FINNHUB_API_KEY = 'd0mv1i1r01qmjqmjlhrgd0mv1i1r01qmjqmjlhs0'; 
+const FINNHUB_API_KEY = import.meta.env.VITE_FINNHUB_API_KEY; 
 
 // Define the stock symbols you want to display
 const STOCK_SYMBOLS = [

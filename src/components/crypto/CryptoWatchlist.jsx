@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
 
-const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K'; 
+const COINGECKO_API_KEY = import.meta.env.VITE_COINGECKO_API_KEY; 
 
 const CryptoWatchlist = () => {
     const [allCoins, setAllCoins] = useState([]);
