@@ -240,7 +240,7 @@ const StockDetail = () => {
 
     return (
         <div className={`py-6 px-4 md:pl-40 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} min-h-screen mt-16`}>
-            <div className="flex items-center mb-6">
+            <div className="mb-6">
                 <button
                     onClick={() => navigate('/market')} 
                     className={`mr-4 px-4 py-2 rounded-md transition-colors
@@ -249,7 +249,7 @@ const StockDetail = () => {
                     &larr; Back to Market
                 </button>
                 {stockDetails.logo && (
-                    <img src={stockDetails.logo} alt={stockDetails.name} className="w-16 h-16 mr- mt-5 object-contain" />
+                    <img src={stockDetails.logo} alt={stockDetails.name} className="w-16 h-16 mr-4 mt-5  object-contain" />
                 )}
                 <div>
                     <h1 className="text-4xl font-bold">{stockDetails.name} <span className="text-gray-400 text-2xl">({stockDetails.ticker || symbol})</span></h1>
