@@ -146,11 +146,11 @@ const CryptoMarket = () => {
                                         onClick={() => handleCoinClick(coin.id)}
                                     >
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">{coin.market_cap_rank}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm">
+                                        <td className="px-6 py-4  text-sm">
                                             <div className="flex items-center">
                                                 <img src={coin.image} alt={coin.name} className="w-6 h-6 rounded-full mr-3" />
                                                 <span className="font-semibold">{coin.name}</span>
-                                                <span className={`ml-2 text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>({coin.symbol.toUpperCase()})</span>
+                                                
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm">${coin.current_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 8 })}</td>
