@@ -77,15 +77,15 @@ const Sidebar = () => {
                     </Link>
 
                     <Link
-                        to='/watchlist'
+                        to='/convert'
                         className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/watchlist') ? activeClass : inactiveClass}`}
                     >
                         <FaRegStar className="w-5 h-5" />
-                        <span className='hidden md:inline'>Watchlist</span>
+                        <span className='hidden md:inline'>Convert</span>
                     </Link>
 
                     <Link
-                        to='/portfolio'
+                        to='#'
                         className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/portfolio') ? activeClass : inactiveClass}`}
                     >
                         <MdOutlinePendingActions className="w-5 h-5" />
@@ -93,7 +93,7 @@ const Sidebar = () => {
                     </Link>
 
                     <Link
-                        to='/settings'
+                        to='#'
                         className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/settings') ? activeClass : inactiveClass}`}
                     >
                         <FaCog className="w-5 h-5" />
@@ -143,22 +143,22 @@ const Sidebar = () => {
                         </NavLink>
                         <NavLink
                             onClick={() => setShowMobileMenu(false)}
-                            to={"/watchlist"}
-                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/watchlist') ? activeClass : `text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700`}`}
+                            to={"/convert"}
+                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/convert') ? activeClass : `text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700`}`}
                         >
-                             <FaRegStar className="w-5 h-5 mr-3" /> Watchlist
+                             <FaRegStar className="w-5 h-5 mr-3" /> Convert
                         </NavLink>
                         <NavLink
                             onClick={() => setShowMobileMenu(false)}
-                            to={"/portfolio"}
-                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/portfolio') ? activeClass : `text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700`}`}
+                            to={"#"}
+                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('#') ? activeClass : `text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700`}`}
                         >
                              <MdOutlinePendingActions className="w-5 h-5 mr-3" /> Portfolio
                         </NavLink>
                         <NavLink
                             onClick={() => setShowMobileMenu(false)}
-                            to={"/settings"}
-                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/settings') ? activeClass : `text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700`}`}
+                            to={"#"}
+                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('#') ? activeClass : `text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700`}`}
                         >
                             <FaCog className="w-5 h-5 mr-3" /> Settings
                         </NavLink>

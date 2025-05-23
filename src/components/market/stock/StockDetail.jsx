@@ -215,7 +215,7 @@ const StockDetail = () => {
                     <p className="text-sm">This could be due to Finnhub API rate limits or an invalid stock symbol. Please try again in a minute.</p>
                 )}
                 <button
-                    onClick={() => navigate('/stocks')} 
+                    onClick={() => navigate('/market')} 
                     className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
                 >
                     Back to Stock Market

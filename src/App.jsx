@@ -1,3 +1,4 @@
+import Convert from './components/convert/Convert';
 import Dashboard from './components/Dashboard';
 import CryptoDetail from './components/market/crypto/CryproDetail';
 import MarketDashboard from './components/market/MarketDashboard';
@@ -18,6 +19,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/market" element={<MarketDashboard />} />
+                  <Route path="/convert" element={<Convert />} />
                   <Route path="/crypto/:coinId" element={<CryptoDetail />} />
                   <Route path="/stocks/:symbol" element={<StockDetail />} />
                   <Route path="*" element={<div className="p-6 text-center">Page Not Found</div>} />

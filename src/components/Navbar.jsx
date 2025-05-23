@@ -18,7 +18,6 @@ const Navbar = () => {
         <h1>FinDash</h1>
       </div>
       <div className='flex items-center space-x-5'>
-          <input type="text" name="" id=""  className=' hidden sm:inline-block w-54 px-3 py-1 rounded-md text-gray-900' placeholder='search coin or stock'/>
           <button className='text-2xl text-dark hover:bg-none' onClick={toggleTheme}>
                 {theme === "light" ? <FaMoon /> : <FaSun />}
             </button>
