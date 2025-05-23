@@ -1,6 +1,7 @@
 import Dashboard from './components/Dashboard';
 import CryptoDetail from './components/market/crypto/CryproDetail';
 import MarketDashboard from './components/market/MarketDashboard';
+import StockDetail from './components/market/stock/StockDetail';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import ThemeContextProvider from './context/ThemeContextProvider';
@@ -18,6 +19,7 @@ function App() {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/market" element={<MarketDashboard />} />
                   <Route path="/crypto/:coinId" element={<CryptoDetail />} />
+                  <Route path="/stocks/:symbol" element={<StockDetail />} />
                   <Route path="*" element={<div className="p-6 text-center">Page Not Found</div>} />
                 </Routes>
               </div>

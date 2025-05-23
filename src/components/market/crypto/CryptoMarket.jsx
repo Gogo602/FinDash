@@ -1,9 +1,9 @@
 import { useEffect, useState, useCallback, useContext } from 'react';
 import { FaArrowUp, FaArrowDown, FaSearch } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; 
-import { ThemeContext } from '../../../context/ThemeContextProvider'; 
+import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../../../context/ThemeContextProvider';
 
-const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K'; 
+const COINGECKO_API_KEY = 'CG-t1v39nhdWBNciCQEnkYDnR2K';
 
 const CryptoMarket = () => {
     const [allCoins, setAllCoins] = useState([]);
@@ -11,7 +11,7 @@ const CryptoMarket = () => {
     const [error, setError] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const { theme } = useContext(ThemeContext);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const isDarkMode = theme === 'dark';
 
@@ -73,10 +73,9 @@ const CryptoMarket = () => {
         })}`;
     };
 
-    // --- MODIFIED: handleCoinClick to navigate ---
     const handleCoinClick = (coinId) => {
         if (coinId) {
-            navigate(`/crypto/${coinId}`); 
+            navigate(`/crypto/${coinId}`);
         }
     };
 
@@ -129,8 +128,8 @@ const CryptoMarket = () => {
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">Coin</th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">Price</th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">24h Change</th>
-                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">24h Volume</th>
-                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">Market Cap</th>
+                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400 hidden md:table-cell">24h Volume</th>
+                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400 hidden md:table-cell">Market Cap</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -144,7 +143,7 @@ const CryptoMarket = () => {
                                             ${isDarkMode ? 'text-gray-300' : 'text-gray-800'}
                                             cursor-pointer
                                         `}
-                                        onClick={() => handleCoinClick(coin.id)} 
+                                        onClick={() => handleCoinClick(coin.id)}
                                     >
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">{coin.market_cap_rank}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm">
@@ -158,8 +157,8 @@ const CryptoMarket = () => {
                                         <td className={`px-6 py-4 whitespace-nowrap text-sm ${changeData.class}`}>
                                             {changeData.display} {changeData.icon}
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm">{formatLargeNumber(coin.total_volume)}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm">{formatLargeNumber(coin.market_cap)}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm hidden md:table-cell">{formatLargeNumber(coin.total_volume)}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm hidden md:table-cell">{formatLargeNumber(coin.market_cap)}</td>
                                     </tr>
                                 );
                             })}

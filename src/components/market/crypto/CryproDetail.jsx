@@ -1,4 +1,3 @@
-
 import  { useEffect, useState, useCallback, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
@@ -80,10 +79,10 @@ const CryptoDetail = () => {
                 throw new Error(`Failed to fetch chart data for ${coinId}: ${response.statusText}`);
             }
             const data = await response.json();
-            setChartData(data.prices); // prices array contains [timestamp, price]
+            setChartData(data.prices); 
         } catch (err) {
             console.error("Error fetching chart data:", err);
-            // Don't set global error, just chart error
+            
         }
     }, [coinId, timeframe]);
 
@@ -98,17 +97,17 @@ const CryptoDetail = () => {
     const chartJsData = {
         labels: chartData.map(data => {
             const date = new Date(data[0]);
-            return date.toLocaleDateString(); // Format timestamp to date string
+            return date.toLocaleDateString(); 
         }),
         datasets: [
             {
                 label: `Price (${coinDetails?.symbol.toUpperCase() || ''})`,
                 data: chartData.map(data => data[1]), // Extract prices
-                borderColor: isDarkMode ? '#82b1ff' : '#42a5f5', // Blue for light, lighter blue for dark
+                borderColor: isDarkMode ? '#82b1ff' : '#42a5f5', 
                 backgroundColor: isDarkMode ? 'rgba(130, 177, 255, 0.2)' : 'rgba(66, 165, 245, 0.2)',
                 tension: 0.4,
                 fill: true,
-                pointRadius: 0, // No points on the line
+                pointRadius: 0, 
             },
         ],
     };
@@ -189,8 +188,8 @@ const CryptoDetail = () => {
     }
 
     return (
-        <div className={`p-6 pl-40 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} min-h-screen mt-16`}>
-            <div className="flex items-center mb-6">
+        <div className={`py-6 px-4 md:pl-40 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} min-h-screen mt-16`}>
+            <div className=" mb-6">
                 <button
                     onClick={() => navigate('/market')}
                     className={`mr-4 px-4 py-2 rounded-md transition-colors
@@ -199,9 +198,9 @@ const CryptoDetail = () => {
                     &larr; Back to Market
                 </button>
                 {coinDetails.image?.large && (
-                    <img src={coinDetails.image.large} alt={coinDetails.name} className="w-16 h-16 rounded-full mr-4" />
+                    <img src={coinDetails.image.large} alt={coinDetails.name} className="w-16 h-16 rounded-full mr-4 mt-5" />
                 )}
-                <div>
+                <div className=''>
                     <h1 className="text-4xl font-bold">{coinDetails.name} <span className="text-gray-400 text-2xl">({coinDetails.symbol.toUpperCase()})</span></h1>
                     {coinDetails.market_cap_rank && (
                         <p className="text-xl mt-1">Rank: #{coinDetails.market_cap_rank}</p>
@@ -247,7 +246,7 @@ const CryptoDetail = () => {
                         </button>
                     ))}
                 </div>
-                <div className="chart-container h-64 md:h-96"> {/* Fixed height for chart */}
+                <div className="chart-container h-64 md:h-96">
                     {chartData.length > 0 ? (
                         <Line data={chartJsData} options={chartOptions} />
                     ) : (
