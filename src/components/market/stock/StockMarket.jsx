@@ -43,7 +43,7 @@ const StockMarket = () => {
                     prev_close: quote.pc,  
                     change: quote.d,       
                     percent_change: quote.dp, 
-                    volume: quote.v,       
+                    volume: quote.t,       
                 };
             });
 
