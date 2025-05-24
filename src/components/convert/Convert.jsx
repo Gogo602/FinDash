@@ -34,18 +34,17 @@ const Convert = () => {
 
   return (
     <div
-      className="w-full h-screen flex flex-wrap  dark:text-gray-900 justify-center items-center bg-cover bg-no-repeat">
-      <div className="w-full">
-        <div className='flex items-center justify-between pb-8'>
-            <h1 className='dark:text-gray-50'>Convert</h1>
+      className="md:pl-40 h-screen  dark:text-gray-900 mt-20">
+      <div className='flex items-center justify-between pb-8'>
+            <h1 className='dark:text-gray-50 font-bold'>Convert</h1>
             <button className=' flex items-center px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200'> <FaPlus className='mr-1'/>Add Assets</button>
         </div>
-        <div className='bg-blue-600 mb-4 w-1/5 p-1 rounded-md'>
-            <button className='text-center text-white font-bold'>
+        <div className=''>
+            <button className='text-blue-50 font-bold bg-blue-600 mb-4 p-1 rounded-md px-5'>
                 Crypto
             </button>
         </div>
-                   
+      <div className="flex flex-wrap justify-center items-center">        
         <div className="w-full max-w-md mx-auto border border-gray-50 rounded-lg p-5 backdrop-blur-sm bg-white/30">
           <form
             onSubmit={(e) => {

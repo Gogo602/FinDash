@@ -78,7 +78,7 @@ const Sidebar = () => {
 
                     <Link
                         to='/convert'
-                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/watchlist') ? activeClass : inactiveClass}`}
+                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/convert') ? activeClass : inactiveClass}`}
                     >
                         <FaRegStar className="w-5 h-5" />
                         <span className='hidden md:inline'>Convert</span>
