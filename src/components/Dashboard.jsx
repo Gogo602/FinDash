@@ -7,6 +7,7 @@ import { FaPlus } from 'react-icons/fa';
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('stock'); 
 
+    //switch button active state
     const getButtonClasses = (tabName) => {
         return `p-1 rounded-md transition-colors px-4 font-bold duration-200 ease-in-out ${
             activeTab === tabName
@@ -50,9 +51,9 @@ const Dashboard = () => {
 
             
             {activeTab === 'stock' ? (
-                <Stock />
+                <Stock /> //rendering stock dashboard on clicked
             ) : (
-                <Crypto />
+                <Crypto /> //rendering crypto dashboard on clicked
             )}
         </div>
     );
